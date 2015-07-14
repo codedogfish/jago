@@ -2,24 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2015-07-14T10:20:20+08:00</lastmod>
+    <loc>http://jackyu.io/</loc>
+    <lastmod>2015-07-12T11:06:08+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/media_query/</loc>
-    <lastmod>2015-07-14T10:20:20+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/post/markdown/basic/</loc>
+    <loc>http://jackyu.io/post/markdown/basic/</loc>
     <lastmod>2015-07-12T11:06:08+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/about/</loc>
-    <lastmod>2015-07-11T11:18:04+08:00</lastmod>
   </url>
   
 </urlset>
