@@ -1,4 +1,12 @@
 baseurl = "http://jackyu.io/"
 languageCode = "en-us"
 title = "JackYu | CodeDogFish"
-theme = "polymer"
+theme = "purehugo"
+Paginate = 10
+disqusShortname = "CodeDogFish"
+
+[params]
+  twitterName = "CodeDogFish"
+  githubName = "CodeDogFish"
+  description = "Hello world!"
+  
