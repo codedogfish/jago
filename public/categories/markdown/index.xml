@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Markdown on JackYu | CodeDogFish</title>
-    <link>http://jackyu.io/categories/markdown/</link>
+    <link>http://localhost:1313/categories/markdown/</link>
     <description>Recent content in Markdown on JackYu | CodeDogFish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 12 Jul 2015 11:06:08 +0800</lastBuildDate>
-    <atom:link href="http://jackyu.io/categories/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/markdown/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>basic</title>
-      <link>http://jackyu.io/post/markdown/basic/</link>
+      <link>http://localhost:1313/post/markdown/basic/</link>
       <pubDate>Sun, 12 Jul 2015 11:06:08 +0800</pubDate>
       
-      <guid>http://jackyu.io/post/markdown/basic/</guid>
+      <guid>http://localhost:1313/post/markdown/basic/</guid>
       <description>
 
 &lt;h2 id=&#34;markdown-basic-快速入门:9f043c0d0d320a105e644fbd6515da42&#34;&gt;Markdown:Basic (快速入门)&lt;/h2&gt;

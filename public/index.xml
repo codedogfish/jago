@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JackYu | CodeDogFish</title>
-    <link>http://jackyu.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on JackYu | CodeDogFish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 14 Jul 2015 18:13:40 +0800</lastBuildDate>
-    <atom:link href="http://jackyu.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>mixins</title>
-      <link>http://jackyu.io/post/sass/mixins/</link>
+      <link>http://localhost:1313/post/sass/mixins/</link>
       <pubDate>Tue, 14 Jul 2015 18:13:40 +0800</pubDate>
       
-      <guid>http://jackyu.io/post/sass/mixins/</guid>
+      <guid>http://localhost:1313/post/sass/mixins/</guid>
       <description>
 
 &lt;h2 id=&#34;dry-ing-out-your-sass-mixins:6f5ca7a4a7a75c974d750a8fe363c304&#34;&gt;DRY-ing Out Your Sass Mixins&lt;/h2&gt;
@@ -29,10 +29,10 @@
     
     <item>
       <title>basic</title>
-      <link>http://jackyu.io/post/markdown/basic/</link>
+      <link>http://localhost:1313/post/markdown/basic/</link>
       <pubDate>Sun, 12 Jul 2015 11:06:08 +0800</pubDate>
       
-      <guid>http://jackyu.io/post/markdown/basic/</guid>
+      <guid>http://localhost:1313/post/markdown/basic/</guid>
       <description>
 
 &lt;h2 id=&#34;markdown-basic-快速入门:9f043c0d0d320a105e644fbd6515da42&#34;&gt;Markdown:Basic (快速入门)&lt;/h2&gt;
