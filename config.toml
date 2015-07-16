@@ -10,3 +10,7 @@ disqusShortname = "CodeDogFish"
   githubName = "CodeDogFish"
   description = "Hello world!"
   google_analytics = "UA-65169483-1"
+
+  [[menu.main]]
+      name = "about hugo"
+      url = "/about/"
