@@ -77,22 +77,14 @@
                         <p class="post-meta">
                             
                             
-                                under 
+                                under
                                 
                                 
                             
                         </p>
                     </header>
 
-                    <div class="post-description">
-                        
-
-<h2 id="20150717:ce792b42fbf3f0185fac17f1eac2f98c">20150717</h2>
-
-<p>早上问小伟要来邵羽整理的mac配置教程，看了，做得相当的不错~
-所以，加油~</p>
-
-                    </div>
+                    
                 </section>
                 
                 <h1 class="content-subhead">17 Jul 2015, 08:44</h1>
@@ -104,143 +96,14 @@
                         <p class="post-meta">
                             
                             
-                                under 
+                                under
                                 
                                 
                             
                         </p>
                     </header>
 
-                    <div class="post-description">
-                        
-
-<h2 id="公司vpn配置:b5e789e001cfcd9a18b36ef13da96386">公司VPN配置</h2>
-
-<h3 id="首先要生成ssh-key:b5e789e001cfcd9a18b36ef13da96386">首先要生成SSH Key</h3>
-
-<p>这一步基本上就是按照GitHub的<a href="https://help.github.com/articles/generating-ssh-keys/">这个教程</a></p>
-
-<p>Pre:</p>
-
-<pre><code>ll ~/.ssh
-#由于之前公司的GitHub仓储需要开通两步验证，所以需要使用SSH连接GitHub，所以可以看到.ssh目录下有id_rsa.pub文件
-#其实公司VPN开通可以直接就用这个，但是我的Buddy和我说还是最好专门生成一个
-</code></pre>
-
-<p>1:With Terminal still open, copy and paste the text below. Make sure you substitute in your GitHub email address.</p>
-
-<pre><code>ssh-keygen -t rsa -b 4096 -C &quot;my work email&quot;
-# Creates a new ssh key, using the provided email as a label
-# Generating public/private rsa key pair.
-</code></pre>
-
-<p>2:We strongly suggest keeping the default settings as they are, so when you&rsquo;re prompted to &ldquo;Enter a file in which to save the key&rdquo;, just press Enter to continue.</p>
-
-<pre><code>Enter file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
-#这里我保存id_rsa_xxx
-</code></pre>
-
-<p>3:You&rsquo;ll be asked to enter a passphrase.</p>
-
-<pre><code>Enter passphrase (empty for no passphrase): [Type a passphrase]
-Enter same passphrase again: [Type passphrase again]
-</code></pre>
-
-<p>4:After you enter a passphrase, you&rsquo;ll be given the fingerprint, or id, of your SSH key. It will look something like this:</p>
-
-<pre><code>Your identification has been saved in /Users/you/.ssh/id_rsa_xxx.
-Your public key has been saved in /Users/you/.ssh/id_rsa_xxx.pub.
-The key fingerprint is:
-01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db [my work email]
-</code></pre>
-
-<p>然后将生成的id_rsa_xx.pub也就是公钥和用户名发给负责VPN的同事，让他给我开通</p>
-
-<h3 id="配置vpn:b5e789e001cfcd9a18b36ef13da96386">配置VPN:</h3>
-
-<p>按照同事发给我的压缩包里的README.md开始配置VPN:</p>
-
-<pre><code># XXX Office OpenVPN HOWTO
-
-将 xxx.conf, ca.key, jackyu.crt, jackyu.key 复制到 OpenVPN 配置目录下，让配置生效。
-
-连接时提示输入密码，此密码是证书的加密密码（见邮件）。
-
-有问题联系：xxx (xxx@xxx.com) 。
-
-## Software
-
-#### Linux
-
-See https://help.ubuntu.com/12.04/serverguide/openvpn.html#openvpn-simple-client-configuration.
-
-#### Mac
-
-推荐 TunnelBlick (http://www.tunnelblick.net).
-
-Step 1, 安装 TunnelBlick
-Step 2, 打开设置界面，左侧点击 '+' 号添加
-Step 3, 根据向导导入配置，最后是在在一个空文件夹里，把 xxx.conf, ca.key, jackyu.crt, jackyu.key 复制进去，改名为 xxx.tblk 后，双击导入
-
-#### Windows
-
-See http://openvpn.se/.
-
-## 通过 VPN 登录跳板机
-
-ssh -p 18022 jackyu@x.x.x.x
-
-## OpenVPN in 虚拟机
-
-需要在虚拟机里，在添加一块网卡，重启下 openvpn 服务，执行 ifconfig 命令查看是否会多个 tun 的网卡，IP 是 x.x.x 网段的，有就可以直接登录了。
-</code></pre>
-
-<p>首先安装OpenVPN，我是提供过brew安装的</p>
-
-<pre><code>brew install openvpn
-</code></pre>
-
-<p>第一次安装失败，提示它以来另一个软件，按照提示运行安装以来软件后，才安装成功的
-至于README中的将四个文件复制到OpenVPN配置目录下，让配置生效，复制了，但是如何让配置生效就不晓得了。。。</p>
-
-<p>其次是安装TunnelBlick，之前就通过brew或是brew cask装好了
-首次连接时需要输入密码，坑爹，邮件里发给我的密码竟然是GUID格式的。。。</p>
-
-<p>再是通过VPN登录跳板机</p>
-
-<pre><code>➜  ~  ssh -p 18022 jackyu@x.x.x.x
-Permission denied (publickey).
-</code></pre>
-
-<p>查过之后发现是没有将配置ssh使用我生成的key</p>
-
-<h3 id="pubkeyauthentication:b5e789e001cfcd9a18b36ef13da96386">PubKeyAuthentication</h3>
-
-<h4 id="set-up-your-client:b5e789e001cfcd9a18b36ef13da96386">Set up your client</h4>
-
-<p>1.Generate your key</p>
-
-<p>ssh-keygen</p>
-
-<p>2.Configure ssh to use the key</p>
-
-<p>vim ~/.ssh/config</p>
-
-<p>3.Copy your key to your server</p>
-
-<p>ssh-copy-id -i /path/to/key.pub SERVERNAME</p>
-
-<h3 id="your-config-file-from-step-2-should-have-something-similar-to-the-following:b5e789e001cfcd9a18b36ef13da96386">Your config file from step 2 should have something similar to the following:</h3>
-
-<p>Host SERVERNAME
-Hostname ip-or-domain-of-server
-User USERNAME
-PubKeyAuthentication yes
-IdentityFile ./path/to/key</p>
-
-<p>关键就是第二步，配置完成以后，顺利登上跳板机。</p>
-
-                    </div>
+                    
                 </section>
                 
                 <h1 class="content-subhead">14 Jul 2015, 18:13</h1>
@@ -252,25 +115,14 @@ IdentityFile ./path/to/key</p>
                         <p class="post-meta">
                             
                             
-                                under 
+                                under
                                 
                                 <a class="post-category post-category-SASS" href="http://jackyu.io//categories/sass">SASS</a>
                             
                         </p>
                     </header>
 
-                    <div class="post-description">
-                        
-
-<h2 id="dry-ing-out-your-sass-mixins:6f5ca7a4a7a75c974d750a8fe363c304">DRY-ing Out Your Sass Mixins</h2>
-
-<h4 id="one-of-the-most-powerful-features-of-the-css-preprocessor-sass-is-the-mixin-an-abstraction-of-a-common-pattern-into-a-semantic-and-reusable-chunk-think-of-taking-the-styles-for-a-button-and-instead-of-needing-to-remember-what-all-of-the-properties-are-having-a-selector-include-the-styles-for-the-button-instead-the-button-styles-are-maintained-in-a-single-place-making-them-easy-to-update-and-keep-consistent:6f5ca7a4a7a75c974d750a8fe363c304">One of the most powerful features of the CSS preprocessor Sass is the mixin, an abstraction of a common pattern into a semantic and reusable chunk. Think of taking the styles for a button and, instead of needing to remember what all of the properties are, having a selector include the styles for the button instead. The button styles are maintained in a single place, making them easy to update and keep consistent.</h4>
-
-<h4 id="css预处理器sass最有用的特性之一就是混合-mixin-它是对代码块的语义化和重用的一种较为通常的抽象模式-比如去思考如何使用一个按钮的样式-而不是去记住这种样式的所有具体属性-然后让选择器去包括所有这些具体属性-按钮的样式仅在一处维护-使得更新简单-也更容易保证一致性:6f5ca7a4a7a75c974d750a8fe363c304">CSS预处理器SASS最有用的特性之一就是混合（Mixin）,它是对代码块的语义化和重用的一种较为通常的抽象模式。比如去思考如何使用一个按钮的样式，而不是去记住这种样式的所有具体属性，然后让选择器去包括所有这些具体属性。按钮的样式仅在一处维护，使得更新简单，也更容易保证一致性。</h4>
-
-<p><a href="http://alistapart.com/article/dry-ing-out-your-sass-mixins">http://alistapart.com/article/dry-ing-out-your-sass-mixins</a></p>
-
-                    </div>
+                    
                 </section>
                 
                 <h1 class="content-subhead">12 Jul 2015, 11:06</h1>
@@ -282,253 +134,14 @@ IdentityFile ./path/to/key</p>
                         <p class="post-meta">
                             
                             
-                                under 
+                                under
                                 
                                 <a class="post-category post-category-Markdown" href="http://jackyu.io//categories/markdown">Markdown</a>
                             
                         </p>
                     </header>
 
-                    <div class="post-description">
-                        
-
-<h2 id="markdown-basic-快速入门:9f043c0d0d320a105e644fbd6515da42">Markdown:Basic (快速入门)</h2>
-
-<h3 id="getting-the-gist-of-markdown-s-formatting-syntax:9f043c0d0d320a105e644fbd6515da42">Getting the Gist of Markdown&rsquo;s Formatting Syntax</h3>
-
-<p>此页提供了 Markdown 的简单概念， 语法说明 页提供了完整详细的文档，说明了每项功能。但是 Markdown 其实很简单就可以上手，此页文档提供了一些范例，并且每个范例都会提供输出的 HTML 结果。</p>
-
-<p>其实直接试试看也是一个很不错的方法， Dingus 是一个网页应用程序，你可以把自已编写的 Markdown 文档转成 XHTML。</p>
-
-<h3 id="段落-标题-区块代码:9f043c0d0d320a105e644fbd6515da42">段落、标题、区块代码</h3>
-
-<p>一个段落是由一个以上的连接的行句组成，而一个以上的空行则会划分出不同的段落（空行的定义是显示上看起来像是空行，就被视为空行，例如有一行只有空白和 tab，那该行也会被视为空行），一般的段落不需要用空白或换行缩进。</p>
-
-<p>Markdown 支持两种标题的语法，Setext 和 atx 形式。Setext 形式是用底线的形式，利用 = （最高阶标题）和 - （第二阶标题），Atx 形式在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶。</p>
-
-<p>区块引用则使用 email 形式的 &lsquo;&gt;&rsquo; 角括号。</p>
-
-<p>Markdown 语法:</p>
-
-<pre><code>A First Level Header
-====================
-A Second Level Header
----------------------
-
-Now is the time for all good men to come to
-the aid of their country. This is just a
-regular paragraph.
-
-The quick brown fox jumped over the lazy
-dog's back.
-### Header 3
-
-&gt; This is a blockquote.
-&gt;
-&gt; This is the second paragraph in the blockquote.
-&gt;
-&gt; ## This is an H2 in a blockquote
-</code></pre>
-
-<p>显示效果如下：</p>
-
-<h1 id="a-first-level-header:9f043c0d0d320a105e644fbd6515da42">A First Level Header</h1>
-
-<h2 id="a-second-level-header:9f043c0d0d320a105e644fbd6515da42">A Second Level Header</h2>
-
-<p>Now is the time for all good men to come to
-the aid of their country. This is just a
-regular paragraph.</p>
-
-<p>The quick brown fox jumped over the lazy
-dog&rsquo;s back.</p>
-
-<h3 id="header-3:9f043c0d0d320a105e644fbd6515da42">Header 3</h3>
-
-<blockquote>
-<p>This is a blockquote.</p>
-
-<p>This is the second paragraph in the blockquote.</p>
-
-<h2 id="this-is-an-h2-in-a-blockquote:9f043c0d0d320a105e644fbd6515da42">This is an H2 in a blockquote</h2>
-</blockquote>
-
-<h3 id="修辞和强调:9f043c0d0d320a105e644fbd6515da42">修辞和强调</h3>
-
-<p>Markdown 使用星号和底线来标记需要强调的区段。</p>
-
-<p>Markdown 语法:</p>
-
-<pre><code>Some of these words *are emphasized*.
-Some of these words _are emphasized also_.
-Use two asterisks for **strong emphasis**.
-Or, if you prefer, __use two underscores instead__.
-</code></pre>
-
-<p>显示效果如下：</p>
-
-<p>Some of these words <em>are emphasized</em>.
-Some of these words <em>are emphasized also</em>.
-Use two asterisks for <strong>strong emphasis</strong>.
-Or, if you prefer, <strong>use two underscores instead</strong>.</p>
-
-<h3 id="列表:9f043c0d0d320a105e644fbd6515da42">列表</h3>
-
-<p>无序列表使用星号、加号和减号来做为列表的项目标记，这些符号是都可以使用的，使用星号：</p>
-
-<pre><code>* Candy.
-* Gum.
-* Booze.
-</code></pre>
-
-<p>加号：</p>
-
-<pre><code>+ Candy.
-+ Gum.
-+ Booze.
-</code></pre>
-
-<p>和减号</p>
-
-<pre><code>- Candy.
-- Gum.
-- Booze.
-</code></pre>
-
-<p>显示效果如下：</p>
-
-<ul>
-<li>Candy.</li>
-<li>Gum.</li>
-<li>Booze.</li>
-</ul>
-
-<p>如果你在项目之间插入空行，那项目的内容会用<code>&lt;p&gt;</code>包起来，你也可以在一个项目内放上多个段落，只要在它前面缩排 4 个空白或 1 个 tab 。</p>
-
-<pre><code>* A list item.
-
-    With multiple paragraphs.
-
-* Another item in the list.
-</code></pre>
-
-<ul>
-<li><p>A list item.</p>
-
-<p>With multiple paragraphs.</p></li>
-
-<li><p>Another item in the list.</p></li>
-</ul>
-
-<h3 id="链接:9f043c0d0d320a105e644fbd6515da42">链接</h3>
-
-<p>Markdown 支援两种形式的链接语法： 行内 和 参考 两种形式，两种都是使用角括号来把文字转成连结。</p>
-
-<p>行内形式是直接在后面用括号直接接上链接：</p>
-
-<pre><code>This is an [example link](http://example.com/).
-</code></pre>
-
-<p>显示效果如下：</p>
-
-<p>This is an <a href="http://example.com/">example link</a>.</p>
-
-<p>你也可以选择性的加上 title 属性：</p>
-
-<pre><code>This is an [example link](http://example.com/ &quot;With a Title&quot;).
-</code></pre>
-
-<p>显示效果如下：</p>
-
-<p>This is an <a href="http://example.com/" title="With a Title">example link</a>.</p>
-
-<p>参考形式的链接让你可以为链接定一个名称，之后你可以在文件的其他地方定义该链接的内容：</p>
-
-<pre><code>I get 10 times more traffic from [Google][1] than from
-[Yahoo][2] or [MSN][3].
-
-[1]: http://google.com/ &quot;Google&quot;
-[2]: http://search.yahoo.com/ &quot;Yahoo Search&quot;
-[3]: http://search.msn.com/ &quot;MSN Search&quot;
-</code></pre>
-
-<p>显示效果如下：</p>
-
-<p>I get 10 times more traffic from <a href="http://google.com/" title="Google">Google</a> than from
-<a href="http://search.yahoo.com/" title="Yahoo Search">Yahoo</a> or <a href="http://search.msn.com/" title="MSN Search">MSN</a>.</p>
-
-<p>title 属性是选择性的，链接名称可以用字母、数字和空格，但是不分大小写：</p>
-
-<pre><code>I start my morning with a cup of coffee and
-[The New York Times][NY Times].
-
-[ny times]: http://www.nytimes.com/
-</code></pre>
-
-<p>显示效果如下：</p>
-
-<p>I start my morning with a cup of coffee and
-<a href="http://www.nytimes.com/">The New York Times</a>.</p>
-
-<h3 id="图片:9f043c0d0d320a105e644fbd6515da42">图片</h3>
-
-<p>图片的语法和链接很像。</p>
-
-<p>行内形式（title 是选择性的）：</p>
-
-<pre><code>![alt text](../../../static/atom_logo.png &quot;Title&quot;)
-</code></pre>
-
-<p>参考形式：</p>
-
-<pre><code>![alt text][id]
-
-[id]: ../../../static/atom_logo.png &quot;Title&quot;
-</code></pre>
-
-<p>显示效果如下：</p>
-
-<p><img src="../../../static/atom_logo.png" alt="alt text" title="Title" /></p>
-
-<h3 id="代码:9f043c0d0d320a105e644fbd6515da42">代码</h3>
-
-<p>在一般的段落文字中，你可以使用反引号 ` 来标记代码区段，区段内的 &amp;、&lt; 和 &gt; 都会被自动的转换成 HTML 实体，这项特性让你可以很容易的在代码区段内插入 HTML 码：</p>
-
-<pre><code>I strongly recommend against using any `&lt;blink&gt;` tags.
-
-I wish SmartyPants used named entities like `&amp;mdash;`
-instead of decimal-encoded entites like `&amp;#8212;`.
-</code></pre>
-
-<p>显示效果如下：</p>
-
-<p>I strongly recommend against using any <code>&lt;blink&gt;</code> tags.</p>
-
-<p>I wish SmartyPants used named entities like <code>&amp;mdash;</code>
-instead of decimal-encoded entites like <code>&amp;#8212;</code>.</p>
-
-<p>如果要建立一个已经格式化好的代码区块，只要每行都缩进 4 个空格或是一个 tab 就可以了，而 &amp;、&lt; 和 &gt; 也一样会自动转成 HTML 实体。</p>
-
-<p>Markdown 语法:</p>
-
-<pre><code>If you want your page to validate under XHTML 1.0 Strict,
-you've got to put paragraph tags in your blockquotes:
-
-&lt;blockquote&gt;
-&lt;p&gt;For example.&lt;/p&gt;
-&lt;/blockquote&gt;
-</code></pre>
-
-<p>显示效果如下：</p>
-
-<p>If you want your page to validate under XHTML 1.0 Strict,
-you&rsquo;ve got to put paragraph tags in your blockquotes:</p>
-
-<blockquote>
-<p>For example.</p>
-</blockquote>
-
-                    </div>
+                    
                 </section>
                 
             </div>
