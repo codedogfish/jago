@@ -6,11 +6,162 @@
     <description>Recent content in Posts on JackYu | CodeDogFish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Jul 2015 18:13:40 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jul 2015 09:25:05 +0800</lastBuildDate>
     <atom:link href="http://jackyu.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>mixins</title>
+      <title>20150717</title>
+      <link>http://jackyu.io/post/blabla/20150717/</link>
+      <pubDate>Fri, 17 Jul 2015 09:25:05 +0800</pubDate>
+      
+      <guid>http://jackyu.io/post/blabla/20150717/</guid>
+      <description>
+
+&lt;h2 id=&#34;20150717:ce792b42fbf3f0185fac17f1eac2f98c&#34;&gt;20150717&lt;/h2&gt;
+
+&lt;p&gt;早上问小伟要来邵羽整理的mac配置教程，看了，做得相当的不错~
+所以，加油~&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>公司VPN配置</title>
+      <link>http://jackyu.io/post/note/ssh/</link>
+      <pubDate>Fri, 17 Jul 2015 08:44:55 +0800</pubDate>
+      
+      <guid>http://jackyu.io/post/note/ssh/</guid>
+      <description>
+
+&lt;h2 id=&#34;公司vpn配置:b5e789e001cfcd9a18b36ef13da96386&#34;&gt;公司VPN配置&lt;/h2&gt;
+
+&lt;h3 id=&#34;首先要生成ssh-key:b5e789e001cfcd9a18b36ef13da96386&#34;&gt;首先要生成SSH Key&lt;/h3&gt;
+
+&lt;p&gt;这一步基本上就是按照GitHub的&lt;a href=&#34;https://help.github.com/articles/generating-ssh-keys/&#34;&gt;这个教程&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Pre:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ll ~/.ssh
+#由于之前公司的GitHub仓储需要开通两步验证，所以需要使用SSH连接GitHub，所以可以看到.ssh目录下有id_rsa.pub文件
+#其实公司VPN开通可以直接就用这个，但是我的Buddy和我说还是最好专门生成一个
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;1:With Terminal still open, copy and paste the text below. Make sure you substitute in your GitHub email address.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh-keygen -t rsa -b 4096 -C &amp;quot;my work email&amp;quot;
+# Creates a new ssh key, using the provided email as a label
+# Generating public/private rsa key pair.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2:We strongly suggest keeping the default settings as they are, so when you&amp;rsquo;re prompted to &amp;ldquo;Enter a file in which to save the key&amp;rdquo;, just press Enter to continue.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Enter file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
+#这里我保存id_rsa_xxx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3:You&amp;rsquo;ll be asked to enter a passphrase.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Enter passphrase (empty for no passphrase): [Type a passphrase]
+Enter same passphrase again: [Type passphrase again]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;4:After you enter a passphrase, you&amp;rsquo;ll be given the fingerprint, or id, of your SSH key. It will look something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Your identification has been saved in /Users/you/.ssh/id_rsa_xxx.
+Your public key has been saved in /Users/you/.ssh/id_rsa_xxx.pub.
+The key fingerprint is:
+01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db [my work email]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后将生成的id_rsa_xx.pub也就是公钥和用户名发给负责VPN的同事，让他给我开通&lt;/p&gt;
+
+&lt;h3 id=&#34;配置vpn:b5e789e001cfcd9a18b36ef13da96386&#34;&gt;配置VPN:&lt;/h3&gt;
+
+&lt;p&gt;按照同事发给我的压缩包里的README.md开始配置VPN:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# XXX Office OpenVPN HOWTO
+
+将 xxx.conf, ca.key, jackyu.crt, jackyu.key 复制到 OpenVPN 配置目录下，让配置生效。
+
+连接时提示输入密码，此密码是证书的加密密码（见邮件）。
+
+有问题联系：xxx (xxx@xxx.com) 。
+
+## Software
+
+#### Linux
+
+See https://help.ubuntu.com/12.04/serverguide/openvpn.html#openvpn-simple-client-configuration.
+
+#### Mac
+
+推荐 TunnelBlick (http://www.tunnelblick.net).
+
+Step 1, 安装 TunnelBlick
+Step 2, 打开设置界面，左侧点击 &#39;+&#39; 号添加
+Step 3, 根据向导导入配置，最后是在在一个空文件夹里，把 xxx.conf, ca.key, jackyu.crt, jackyu.key 复制进去，改名为 xxx.tblk 后，双击导入
+
+#### Windows
+
+See http://openvpn.se/.
+
+## 通过 VPN 登录跳板机
+
+ssh -p 18022 jackyu@x.x.x.x
+
+## OpenVPN in 虚拟机
+
+需要在虚拟机里，在添加一块网卡，重启下 openvpn 服务，执行 ifconfig 命令查看是否会多个 tun 的网卡，IP 是 x.x.x 网段的，有就可以直接登录了。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;首先安装OpenVPN，我是提供过brew安装的&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;brew install openvpn
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第一次安装失败，提示它以来另一个软件，按照提示运行安装以来软件后，才安装成功的
+至于README中的将四个文件复制到OpenVPN配置目录下，让配置生效，复制了，但是如何让配置生效就不晓得了。。。&lt;/p&gt;
+
+&lt;p&gt;其次是安装TunnelBlick，之前就通过brew或是brew cask装好了
+首次连接时需要输入密码，坑爹，邮件里发给我的密码竟然是GUID格式的。。。&lt;/p&gt;
+
+&lt;p&gt;再是通过VPN登录跳板机&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;➜  ~  ssh -p 18022 jackyu@x.x.x.x
+Permission denied (publickey).
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查过之后发现是没有将配置ssh使用我生成的key&lt;/p&gt;
+
+&lt;h3 id=&#34;pubkeyauthentication:b5e789e001cfcd9a18b36ef13da96386&#34;&gt;PubKeyAuthentication&lt;/h3&gt;
+
+&lt;h4 id=&#34;set-up-your-client:b5e789e001cfcd9a18b36ef13da96386&#34;&gt;Set up your client&lt;/h4&gt;
+
+&lt;p&gt;1.Generate your key&lt;/p&gt;
+
+&lt;p&gt;ssh-keygen&lt;/p&gt;
+
+&lt;p&gt;2.Configure ssh to use the key&lt;/p&gt;
+
+&lt;p&gt;vim ~/.ssh/config&lt;/p&gt;
+
+&lt;p&gt;3.Copy your key to your server&lt;/p&gt;
+
+&lt;p&gt;ssh-copy-id -i /path/to/key.pub SERVERNAME&lt;/p&gt;
+
+&lt;h3 id=&#34;your-config-file-from-step-2-should-have-something-similar-to-the-following:b5e789e001cfcd9a18b36ef13da96386&#34;&gt;Your config file from step 2 should have something similar to the following:&lt;/h3&gt;
+
+&lt;p&gt;Host SERVERNAME
+Hostname ip-or-domain-of-server
+User USERNAME
+PubKeyAuthentication yes
+IdentityFile ./path/to/key&lt;/p&gt;
+
+&lt;p&gt;关键就是第二步，配置完成以后，顺利登上跳板机。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>DRY-ing Out Your Sass Mixins</title>
       <link>http://jackyu.io/post/sass/mixins/</link>
       <pubDate>Tue, 14 Jul 2015 18:13:40 +0800</pubDate>
       
@@ -28,7 +179,7 @@
     </item>
     
     <item>
-      <title>basic</title>
+      <title>Markdown:Basic (快速入门)</title>
       <link>http://jackyu.io/post/markdown/basic/</link>
       <pubDate>Sun, 12 Jul 2015 11:06:08 +0800</pubDate>
       

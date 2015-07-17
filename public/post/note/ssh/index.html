@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公司VPN配置 &middot; JackYu | CodeDogFish</title>
+
+    <meta name="description" content="">
+
+    <meta name="generator" content="Hugo 0.14" />
+    <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:title" content="公司VPN配置 &middot; JackYu | CodeDogFish">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="公司VPN配置 &middot; JackYu | CodeDogFish">
+    <meta property="og:description" content="">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+    <!--<![endif]-->
+
+    <link rel="stylesheet" href="http://jackyu.io//css/all.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="JackYu | CodeDogFish" href="http://jackyu.io//index.xml" />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://jackyu.io/">JackYu | CodeDogFish</a></h1>
+            <h2 class="brand-tagline"> Hello world! </h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://twitter.com/CodeDogFish"><i class="fa fa-twitter"></i> Twitter</a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/CodeDogFish "><i class="fa fa-github-alt"></i> github</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="http://jackyu.io//index.xml"><i class="fa fa-rss"></i> rss</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">17 Jul 2015, 08:44</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://jackyu.io/post/note/ssh/" class="post-title">公司VPN配置</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-share">
+                        <div class="post-share-links">
+                            <h4 style="">Share</h4>
+                            <a href="#" data-type="facebook" data-url="http://jackyu.io/post/note/ssh/" data-title="公司VPN配置" data-description="" data-media="" class="prettySocial fa fa-facebook"></a>
+                            <a href="#" data-type="googleplus" data-url="http://jackyu.io/post/note/ssh/" data-description="" class="prettySocial fa fa-google-plus"></a>
+                            
+                            
+                        </div>
+                    </div>
+                    <div class="post-description">
+                        
+
+<h2 id="公司vpn配置:b5e789e001cfcd9a18b36ef13da96386">公司VPN配置</h2>
+
+<h3 id="首先要生成ssh-key:b5e789e001cfcd9a18b36ef13da96386">首先要生成SSH Key</h3>
+
+<p>这一步基本上就是按照GitHub的<a href="https://help.github.com/articles/generating-ssh-keys/">这个教程</a></p>
+
+<p>Pre:</p>
+
+<pre><code>ll ~/.ssh
+#由于之前公司的GitHub仓储需要开通两步验证，所以需要使用SSH连接GitHub，所以可以看到.ssh目录下有id_rsa.pub文件
+#其实公司VPN开通可以直接就用这个，但是我的Buddy和我说还是最好专门生成一个
+</code></pre>
+
+<p>1:With Terminal still open, copy and paste the text below. Make sure you substitute in your GitHub email address.</p>
+
+<pre><code>ssh-keygen -t rsa -b 4096 -C &quot;my work email&quot;
+# Creates a new ssh key, using the provided email as a label
+# Generating public/private rsa key pair.
+</code></pre>
+
+<p>2:We strongly suggest keeping the default settings as they are, so when you&rsquo;re prompted to &ldquo;Enter a file in which to save the key&rdquo;, just press Enter to continue.</p>
+
+<pre><code>Enter file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
+#这里我保存id_rsa_xxx
+</code></pre>
+
+<p>3:You&rsquo;ll be asked to enter a passphrase.</p>
+
+<pre><code>Enter passphrase (empty for no passphrase): [Type a passphrase]
+Enter same passphrase again: [Type passphrase again]
+</code></pre>
+
+<p>4:After you enter a passphrase, you&rsquo;ll be given the fingerprint, or id, of your SSH key. It will look something like this:</p>
+
+<pre><code>Your identification has been saved in /Users/you/.ssh/id_rsa_xxx.
+Your public key has been saved in /Users/you/.ssh/id_rsa_xxx.pub.
+The key fingerprint is:
+01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db [my work email]
+</code></pre>
+
+<p>然后将生成的id_rsa_xx.pub也就是公钥和用户名发给负责VPN的同事，让他给我开通</p>
+
+<h3 id="配置vpn:b5e789e001cfcd9a18b36ef13da96386">配置VPN:</h3>
+
+<p>按照同事发给我的压缩包里的README.md开始配置VPN:</p>
+
+<pre><code># XXX Office OpenVPN HOWTO
+
+将 xxx.conf, ca.key, jackyu.crt, jackyu.key 复制到 OpenVPN 配置目录下，让配置生效。
+
+连接时提示输入密码，此密码是证书的加密密码（见邮件）。
+
+有问题联系：xxx (xxx@xxx.com) 。
+
+## Software
+
+#### Linux
+
+See https://help.ubuntu.com/12.04/serverguide/openvpn.html#openvpn-simple-client-configuration.
+
+#### Mac
+
+推荐 TunnelBlick (http://www.tunnelblick.net).
+
+Step 1, 安装 TunnelBlick
+Step 2, 打开设置界面，左侧点击 '+' 号添加
+Step 3, 根据向导导入配置，最后是在在一个空文件夹里，把 xxx.conf, ca.key, jackyu.crt, jackyu.key 复制进去，改名为 xxx.tblk 后，双击导入
+
+#### Windows
+
+See http://openvpn.se/.
+
+## 通过 VPN 登录跳板机
+
+ssh -p 18022 jackyu@x.x.x.x
+
+## OpenVPN in 虚拟机
+
+需要在虚拟机里，在添加一块网卡，重启下 openvpn 服务，执行 ifconfig 命令查看是否会多个 tun 的网卡，IP 是 x.x.x 网段的，有就可以直接登录了。
+</code></pre>
+
+<p>首先安装OpenVPN，我是提供过brew安装的</p>
+
+<pre><code>brew install openvpn
+</code></pre>
+
+<p>第一次安装失败，提示它以来另一个软件，按照提示运行安装以来软件后，才安装成功的
+至于README中的将四个文件复制到OpenVPN配置目录下，让配置生效，复制了，但是如何让配置生效就不晓得了。。。</p>
+
+<p>其次是安装TunnelBlick，之前就通过brew或是brew cask装好了
+首次连接时需要输入密码，坑爹，邮件里发给我的密码竟然是GUID格式的。。。</p>
+
+<p>再是通过VPN登录跳板机</p>
+
+<pre><code>➜  ~  ssh -p 18022 jackyu@x.x.x.x
+Permission denied (publickey).
+</code></pre>
+
+<p>查过之后发现是没有将配置ssh使用我生成的key</p>
+
+<h3 id="pubkeyauthentication:b5e789e001cfcd9a18b36ef13da96386">PubKeyAuthentication</h3>
+
+<h4 id="set-up-your-client:b5e789e001cfcd9a18b36ef13da96386">Set up your client</h4>
+
+<p>1.Generate your key</p>
+
+<p>ssh-keygen</p>
+
+<p>2.Configure ssh to use the key</p>
+
+<p>vim ~/.ssh/config</p>
+
+<p>3.Copy your key to your server</p>
+
+<p>ssh-copy-id -i /path/to/key.pub SERVERNAME</p>
+
+<h3 id="your-config-file-from-step-2-should-have-something-similar-to-the-following:b5e789e001cfcd9a18b36ef13da96386">Your config file from step 2 should have something similar to the following:</h3>
+
+<p>Host SERVERNAME
+Hostname ip-or-domain-of-server
+User USERNAME
+PubKeyAuthentication yes
+IdentityFile ./path/to/key</p>
+
+<p>关键就是第二步，配置完成以后，顺利登上跳板机。</p>
+
+                    </div>
+                    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'CodeDogFish';
+    var disqus_identifier = 'http:\/\/jackyu.io\/post\/note\/ssh\/';
+    var disqus_title = '公司VPN配置';
+    var disqus_url = 'http:\/\/jackyu.io\/post\/note\/ssh\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                </section>
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="http://hugo.spf13.com/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+<script src="http://jackyu.io//js/all.min.js"></script>
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-65169483-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?eb127f1e99def9a284fa2f245340ff91";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+11D41083-ABAC-4A22-96B3-9FDE2C1D0F0C
+
+</body>
+</html>

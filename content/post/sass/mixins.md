@@ -2,9 +2,10 @@
 Categories = ["SASS"]
 Tags = []
 date = "2015-07-14T18:13:40+08:00"
-title = "mixins"
+title = "DRY-ing Out Your Sass Mixins"
 
 +++
+
 ## DRY-ing Out Your Sass Mixins
 
 #### One of the most powerful features of the CSS preprocessor Sass is the mixin, an abstraction of a common pattern into a semantic and reusable chunk. Think of taking the styles for a button and, instead of needing to remember what all of the properties are, having a selector include the styles for the button instead. The button styles are maintained in a single place, making them easy to update and keep consistent.
