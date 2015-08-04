@@ -2,19 +2,50 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on JackYu | CodeDogFish</title>
-    <link>http://jackyu.io/post/</link>
+    <link>http://localhost:1313/post/</link>
     <description>Recent content in Posts on JackYu | CodeDogFish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 Jul 2015 09:25:05 +0800</lastBuildDate>
-    <atom:link href="http://jackyu.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Jul 2015 16:45:57 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>7 Easy Steps to Install Go (Golang) on Ubuntu</title>
+      <link>http://localhost:1313/post/golang/ubuntu_install/</link>
+      <pubDate>Sun, 19 Jul 2015 16:45:57 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/golang/ubuntu_install/</guid>
+      <description>
+
+&lt;h2 id=&#34;7-easy-steps-to-install-go-golang-on-ubuntu:2ff492b165ce5d65fa8e6fe45db1c45a&#34;&gt;7 Easy Steps to Install Go (Golang) on Ubuntu&lt;/h2&gt;
+
+&lt;p&gt;Installing Go (Golang) can be tricky on Ubuntu. The repositories for version 12.04 and 14.04 are dated and install older version of Go.&lt;/p&gt;
+
+&lt;p&gt;在Ubuntu上安装Go语言需要一些黑科技。在12.04和14.04版本的仓储中Go的版本是已经过时的而且默认安装的是老版本的。&lt;/p&gt;
+
+&lt;p&gt;Luckily there is a tool called the Go Version Manager (gvm) to help install, maintain and even switch Go versions. I know it can be a little scary not using ‘apt-get’ or ‘aptitude’, but in this case, it is worth it.&lt;/p&gt;
+
+&lt;p&gt;幸运的是有一个叫做Go Version Manager(gvm)的工具可以帮助安装和维护甚至用来切换Go语言的版本。我知道如果不使用‘apt-get’或‘aptitude’可能有点可怕，但是在这个例子里，这是值得的。&lt;/p&gt;
+
+&lt;p&gt;The installation is just a clone of a GitHub repo and a single line in your .bashrc.&lt;/p&gt;
+
+&lt;p&gt;安装仅需要克隆一个GitHub仓储和在你的.bashrc中加入一行代码即可。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-clone-the-repo-and-add-to-user-directory:2ff492b165ce5d65fa8e6fe45db1c45a&#34;&gt;1.Clone the Repo and Add to User Directory&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;bash &amp;lt; &amp;lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This command uses cURL to grab the GitHub repo and install it into your user directory. The file that this repo is placed in is ~/.gvm.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>20150717</title>
-      <link>http://jackyu.io/post/blabla/20150717/</link>
+      <link>http://localhost:1313/post/blabla/20150717/</link>
       <pubDate>Fri, 17 Jul 2015 09:25:05 +0800</pubDate>
       
-      <guid>http://jackyu.io/post/blabla/20150717/</guid>
+      <guid>http://localhost:1313/post/blabla/20150717/</guid>
       <description>
 
 &lt;h2 id=&#34;20150717:ce792b42fbf3f0185fac17f1eac2f98c&#34;&gt;20150717&lt;/h2&gt;
@@ -33,10 +64,10 @@
     
     <item>
       <title>公司VPN配置</title>
-      <link>http://jackyu.io/post/note/ssh/</link>
+      <link>http://localhost:1313/post/note/ssh/</link>
       <pubDate>Fri, 17 Jul 2015 08:44:55 +0800</pubDate>
       
-      <guid>http://jackyu.io/post/note/ssh/</guid>
+      <guid>http://localhost:1313/post/note/ssh/</guid>
       <description>
 
 &lt;h2 id=&#34;公司vpn配置:b5e789e001cfcd9a18b36ef13da96386&#34;&gt;公司VPN配置&lt;/h2&gt;
@@ -169,10 +200,10 @@ IdentityFile ./path/to/key&lt;/p&gt;
     
     <item>
       <title>DRY-ing Out Your Sass Mixins</title>
-      <link>http://jackyu.io/post/sass/mixins/</link>
+      <link>http://localhost:1313/post/sass/mixins/</link>
       <pubDate>Tue, 14 Jul 2015 18:13:40 +0800</pubDate>
       
-      <guid>http://jackyu.io/post/sass/mixins/</guid>
+      <guid>http://localhost:1313/post/sass/mixins/</guid>
       <description>
 
 &lt;h2 id=&#34;dry-ing-out-your-sass-mixins:6f5ca7a4a7a75c974d750a8fe363c304&#34;&gt;DRY-ing Out Your Sass Mixins&lt;/h2&gt;
@@ -187,10 +218,10 @@ IdentityFile ./path/to/key&lt;/p&gt;
     
     <item>
       <title>Markdown:Basic (快速入门)</title>
-      <link>http://jackyu.io/post/markdown/basic/</link>
+      <link>http://localhost:1313/post/markdown/basic/</link>
       <pubDate>Sun, 12 Jul 2015 11:06:08 +0800</pubDate>
       
-      <guid>http://jackyu.io/post/markdown/basic/</guid>
+      <guid>http://localhost:1313/post/markdown/basic/</guid>
       <description>
 
 &lt;h2 id=&#34;markdown-basic-快速入门:9f043c0d0d320a105e644fbd6515da42&#34;&gt;Markdown:Basic (快速入门)&lt;/h2&gt;

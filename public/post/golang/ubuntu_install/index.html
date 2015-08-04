@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>20150717 &middot; JackYu | CodeDogFish</title>
+    <title>7 Easy Steps to Install Go (Golang) on Ubuntu &middot; JackYu | CodeDogFish</title>
 
     <meta name="description" content="">
 
     <meta name="generator" content="Hugo 0.14" />
     <meta name="twitter:card" content="summary">
     
-    <meta name="twitter:title" content="20150717 &middot; JackYu | CodeDogFish">
+    <meta name="twitter:title" content="7 Easy Steps to Install Go (Golang) on Ubuntu &middot; JackYu | CodeDogFish">
     <meta name="twitter:description" content="">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="20150717 &middot; JackYu | CodeDogFish">
+    <meta property="og:title" content="7 Easy Steps to Install Go (Golang) on Ubuntu &middot; JackYu | CodeDogFish">
     <meta property="og:description" content="">
 
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
@@ -67,11 +67,11 @@
         <div>
             
             <div class="posts">
-                <h1 class="content-subhead">17 Jul 2015, 09:25</h1>
+                <h1 class="content-subhead">19 Jul 2015, 16:45</h1>
                 <section class="post">
                     <header class="post-header">
 
-                        <a href="http://localhost:1313/post/blabla/20150717/" class="post-title">20150717</a>
+                        <a href="http://localhost:1313/post/golang/ubuntu_install/" class="post-title">7 Easy Steps to Install Go (Golang) on Ubuntu</a>
 
                         <p class="post-meta">
                             
@@ -87,25 +87,34 @@
                     <div class="post-description">
                         
 
-<h2 id="20150717:ce792b42fbf3f0185fac17f1eac2f98c">20150717</h2>
+<h2 id="7-easy-steps-to-install-go-golang-on-ubuntu:2ff492b165ce5d65fa8e6fe45db1c45a">7 Easy Steps to Install Go (Golang) on Ubuntu</h2>
 
-<ol>
-<li><p>早上问小伟要来邵羽整理的mac配置教程，看了，做得相当的不错~
-所以，加油~</p></li>
+<p>Installing Go (Golang) can be tricky on Ubuntu. The repositories for version 12.04 and 14.04 are dated and install older version of Go.</p>
 
-<li><p>purehugo的模板会把md元数据里的title读出来当标题，而我又习惯在md的开头用##写标题
-所以，改模板
-继续，把首页模板改成仅显示最新的Post的Content
-后面在siderbar里添加section连接</p></li>
-</ol>
+<p>在Ubuntu上安装Go语言需要一些黑科技。在12.04和14.04版本的仓储中Go的版本是已经过时的而且默认安装的是老版本的。</p>
+
+<p>Luckily there is a tool called the Go Version Manager (gvm) to help install, maintain and even switch Go versions. I know it can be a little scary not using ‘apt-get’ or ‘aptitude’, but in this case, it is worth it.</p>
+
+<p>幸运的是有一个叫做Go Version Manager(gvm)的工具可以帮助安装和维护甚至用来切换Go语言的版本。我知道如果不使用‘apt-get’或‘aptitude’可能有点可怕，但是在这个例子里，这是值得的。</p>
+
+<p>The installation is just a clone of a GitHub repo and a single line in your .bashrc.</p>
+
+<p>安装仅需要克隆一个GitHub仓储和在你的.bashrc中加入一行代码即可。</p>
+
+<h3 id="1-clone-the-repo-and-add-to-user-directory:2ff492b165ce5d65fa8e6fe45db1c45a">1.Clone the Repo and Add to User Directory</h3>
+
+<pre><code>bash &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+</code></pre>
+
+<p>This command uses cURL to grab the GitHub repo and install it into your user directory. The file that this repo is placed in is ~/.gvm.</p>
 
                     </div>
                     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'CodeDogFish';
-    var disqus_identifier = 'http:\/\/localhost:1313\/post\/blabla\/20150717\/';
-    var disqus_title = '20150717';
-    var disqus_url = 'http:\/\/localhost:1313\/post\/blabla\/20150717\/';
+    var disqus_identifier = 'http:\/\/localhost:1313\/post\/golang\/ubuntu_install\/';
+    var disqus_title = '7 Easy Steps to Install Go (Golang) on Ubuntu';
+    var disqus_url = 'http:\/\/localhost:1313\/post\/golang\/ubuntu_install\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
